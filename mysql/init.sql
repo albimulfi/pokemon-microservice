@@ -3,10 +3,10 @@ use pokemon_db;
 
 create table if not exists pokemon (
     id int primary key auto_increment,
-    name varchar(255),
-    type varchar(255),
+    name varchar(100),
+    type varchar(50),
     hp int,
-    attack_power int,
+    attack_power int
 );
 
 insert into pokemon (name, type, hp, attack_power) values

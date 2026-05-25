@@ -1,19 +1,15 @@
 const mysql = require("mysql2");
 
-const connection = mysql.createConnection({
+const pool = mysql.createPool({
   host: "mysql-db",
   user: "root",
   password: "password",
-  database: "pokemon_db"
+  database: "pokemon_db",
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
 });
 
-connection.connect((err) => {
-  if (err) {
-    console.log("Database connection failed");
-    console.log(err);
-  } else {
-    console.log("Connected to MySQL");
-  }
-});
+console.log("MySQL Pool Created");
 
-module.exports = connection;
+module.exports = pool;
